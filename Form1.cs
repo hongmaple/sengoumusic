@@ -66,14 +66,9 @@ namespace 音频播放
             this.pictureBox1.Image = imageList1.Images[i];
             i++;
             timer1.Enabled = true;
-            if (listBox2.SelectedIndex != -1)
-            {
-                axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
-                label2.Text = listBox2.SelectedItem.ToString();
-            }
         }
         #endregion
-        #region//listbox2控件下一首
+        #region//listbox1控件下一首
         public void Slistbox1()
         {
             try
@@ -83,34 +78,34 @@ namespace 音频播放
                     MessageBox.Show("请选择歌曲","操作提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     return;
                 }
-                int index = listBox2.SelectedIndex; //获得当前选中歌曲的索引
+                int index = listBox1.SelectedIndex; //获得当前选中歌曲的索引
                 index++;
                 if (comboBox1.Text == "单曲循环")
                 {
                     axWindowsMediaPlayer1.settings.setMode("loop", true);
-                    axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
+                    axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                     return;
                 }
                 else if (comboBox1.Text == "顺序播放")
                 {
-                    if (index == listBox2.Items.Count)
+                    if (index == listBox1.Items.Count)
                     {
                         index = 0;
                     }
-                    listBox2.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                    listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
                     //sp.SoundLocation = listsongs[index];
-                    label2.Text = listBox2.SelectedItem.ToString();
+                    label2.Text = listBox1.SelectedItem.ToString();
                     axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                     return;
                 }
-                if (index == listBox2.Items.Count)
+                if (index == listBox1.Items.Count)
                 {
                     index = 0;
                 }
-                listBox2.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
                 //sp.SoundLocation = listsongs[index];
-                label2.Text = listBox2.SelectedItem.ToString();
-                axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
+                label2.Text = listBox1.SelectedItem.ToString();
+                axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
             }
             catch (Exception ex)
             {
@@ -118,7 +113,7 @@ namespace 音频播放
             }
         }
         #endregion
-        #region//listbox2控件上一首
+        #region//listbox1控件上一首
         public void Slistbox2()
         {
             try
@@ -128,7 +123,7 @@ namespace 音频播放
                     MessageBox.Show("请选择歌曲", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                int index = listBox2.SelectedIndex; //获得当前选中歌曲的索引
+                int index = listBox1.SelectedIndex; //获得当前选中歌曲的索引
                 if (index == 0)
                 {
                     return;
@@ -137,29 +132,29 @@ namespace 音频播放
                 if (comboBox1.Text == "单曲循环")
                 {
                     axWindowsMediaPlayer1.settings.setMode("loop", true);
-                    axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
+                    axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                     return;
                 }
                 else if (comboBox1.Text == "顺序播放")
                 {
-                    if (index == listBox2.Items.Count)
+                    if (index == listBox1.Items.Count)
                     {
                         index = 0;
                     }
-                    listBox2.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                    listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
                     //sp.SoundLocation = listsongs[index];
-                    label2.Text = listBox2.SelectedItem.ToString();
-                    axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
+                    label2.Text = listBox1.SelectedItem.ToString();
+                    axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                     return;
                 }
-                if (index == listBox2.Items.Count)
+                if (index == listBox1.Items.Count)
                 {
                     index = 0;
                 }
-                listBox2.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
                 //sp.SoundLocation = listsongs[index];
-                label2.Text = listBox2.SelectedItem.ToString();
-                axWindowsMediaPlayer1.URL = listsongs[listBox2.SelectedItem.ToString()];
+                label2.Text = listBox1.SelectedItem.ToString();
+                axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
             }
             //}
             catch (Exception ex)
@@ -170,10 +165,20 @@ namespace 音频播放
         #endregion
         private void button4_Click(object sender, EventArgs e)
         {
+            loadmusic(sender, e);
+        }
+        FileInfo[] fileInfos = null;
+        private void loadmusic(object sender, EventArgs e)
+        {
             try
             {
-                DirectoryInfo folder = new DirectoryInfo(@"C:\Users\Maple\Music");//本地计算机音乐路径
-                foreach (FileInfo file in folder.GetFiles("*.mp3"))
+                DirectoryInfo folder = new DirectoryInfo(@"D:\CloudMusic");//本地计算机音乐路径
+                fileInfos = folder.GetFiles("*.mp3");
+                if (fileInfos.Length == 0)
+                {
+                    MessageBox.Show("没有扫描到音乐");
+                }
+                foreach (FileInfo file in fileInfos)
                 {
                     listsongs.Add(file.Name, file.FullName);
                     listBox1.Items.Add(file.Name);  //将音乐文件的文件名加载到listBox中
@@ -186,19 +191,15 @@ namespace 音频播放
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            timer2.Enabled = false;
+            loadmusic(sender, e);
+            comboBox1.SelectedIndex = 1;
+            timer2.Enabled = true;
         }
         #region//定时器
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
             {
-                //if (i >= 6 || i < 0)
-                //{
-                //    i = 0;
-                //}
-                //this.pictureBox1.Image = imageList1.Images[i];
-                //i++;
                 progressBar1.Maximum = (int)axWindowsMediaPlayer1.currentMedia.duration;
                 progressBar1.Minimum = 0;
                 progressBar1.Step = (int)(progressBar1.Maximum / 20);
@@ -233,7 +234,7 @@ namespace 音频播放
             if (listBox1.SelectedIndex >= 0)
             {
                 //axWindowsMediaPlayer1.URL=listsongs[listBox1.SelectedItem.ToString()];
-                axWindowsMediaPlayer1.Ctlcontrols.play();
+                play();
                 timer1.Enabled = true;
             }
         }
@@ -244,7 +245,7 @@ namespace 音频播放
         private void listBox1_DoubleClick_1(object sender, EventArgs e)//歌曲列表，双击歌名执行代码
         {
             play();
-            }
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -261,59 +262,6 @@ namespace 音频播放
         }
 
         private void button5_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (listBox1.SelectedIndex < 0)
-                {
-                    MessageBox.Show("请选择歌曲", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                int a = tabControl1.SelectedIndex;
-                if (a == 0)
-                {
-                    int index = listBox1.SelectedIndex; //获得当前选中歌曲的索引
-
-                    index++;
-                    if (comboBox1.Text == "单曲循环")
-                    {
-                        axWindowsMediaPlayer1.settings.setMode("loop", true);
-                        axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
-                        return;
-                    }
-                    else if (comboBox1.Text == "顺序播放")
-                    {
-                        if (index == listBox1.Items.Count)
-                        {
-                            index = 0;
-                        }
-                        listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
-                        label2.Text = listBox1.SelectedItem.ToString();
-                        axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
-                        return;
-                    }
-
-                    if (index == listBox1.Items.Count)
-                    {
-                        index = 0;
-                    }
-                    listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
-                    label2.Text = listBox1.SelectedItem.ToString();
-                    axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
-                }
-                else if (tabPage2.Text == "我收藏的歌曲")
-                {
-                    Slistbox1();
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
         {
             try
             {
@@ -360,13 +308,57 @@ namespace 音频播放
                     label2.Text = listBox1.SelectedItem.ToString();
                     axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                 }
-                else if (tabPage2.Text == "我收藏的歌曲")
+            }
+            //}
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (listBox1.SelectedIndex < 0)
                 {
-                    Slistbox2();
+                    MessageBox.Show("请选择歌曲", "操作提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                int a = tabControl1.SelectedIndex;
+                if (a == 0)
+                {
+                    int index = listBox1.SelectedIndex; //获得当前选中歌曲的索引
+
+                    index++;
+                    if (comboBox1.Text == "单曲循环")
+                    {
+                        axWindowsMediaPlayer1.settings.setMode("loop", true);
+                        axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
+                        return;
+                    }
+                    else if (comboBox1.Text == "顺序播放")
+                    {
+                        if (index == listBox1.Items.Count)
+                        {
+                            index = 0;
+                        }
+                        listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                        label2.Text = listBox1.SelectedItem.ToString();
+                        axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
+                        return;
+                    }
+
+                    if (index == listBox1.Items.Count)
+                    {
+                        index = 0;
+                    }
+                    listBox1.SelectedIndex = index; //将改变后的索引重新赋值给我当前选中项的索引
+                    label2.Text = listBox1.SelectedItem.ToString();
+                    axWindowsMediaPlayer1.URL = listsongs[listBox1.SelectedItem.ToString()];
                 }
 
             }
-            //}
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -390,74 +382,7 @@ namespace 音频播放
             WindowState = FormWindowState.Minimized;
         }
     }
-    private void listBox2_DoubleClick(object sender, EventArgs e)
-        {
-            play2();
-        }
-      
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            if (tabControl1.SelectedTab.Text.ToString()=="所有歌曲")
-            {
-                收藏ToolStripMenuItem.Visible = true;
-                移除收藏ToolStripMenuItem.Visible=false;
-            }
-            if (tabControl1.SelectedTab.Text.ToString()=="我收藏的歌曲")
-            {
-                收藏ToolStripMenuItem.Visible = false;
-                移除收藏ToolStripMenuItem.Visible = true;
-            }
-        }
-        Like like = new Like();
-        
-        private void 收藏ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // 移除收藏ToolStripMenuItem.Text = 收藏ToolStripMenuItem.Text;
-                string music1 = listBox1.SelectedItem.ToString();
-                int index = listBox1.SelectedIndex;
-                int QQ = 22658736;
-
-                string sql = string.Format(@"INSERT INTO [MapleQQ].[dbo].[LikeGequ]
-                                               ([GQQ]
-                                               ,[GequName]
-                                               ,[GequPath])
-                                         VALUES('" + QQ + "','" + music1 + "','" + index + "')");
-                int number = like.DIDUpdata(sql);
-                if (number == 1)
-                {
-                    MessageBox.Show("收藏成功");
-
-                    while (listBox1.SelectedItems.Count > 0)
-                    {
-                        listBox2.Items.Add(listBox1.SelectedItems[0]);
-                        //listBox1.Items.Remove(listBox1.SelectedItems[0]);
-                        return;
-                    }
-                    //return;
-                    //}
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void 移除收藏ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab.Text.ToString() == "我收藏的歌曲")
-            {
-                while (listBox1.SelectedItems.Count > 0)
-                {
-                    listBox2.Items.Remove(listBox2.SelectedItems[0]);
-                    return;
-                }
-            }
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
+     /*   private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -465,9 +390,8 @@ namespace 音频播放
                 leftFalg = true;//点击左键，按下鼠标时标记为true
             }
 
-        }
-
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        }*/
+    /*    private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (leftFalg)
             {
@@ -484,6 +408,5 @@ namespace 音频播放
                 leftFalg = false;//释放鼠标后标记为false
             }
 
-        }
-    }
+        }*/
 }

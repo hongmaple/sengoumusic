@@ -22,3 +22,8 @@ D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\音频播放.c
 D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\音频播放.csproj.CoreCompileInputs.cache
 D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\音频播放.exe
 D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\音频播放.pdb
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\音频播放.exe.config
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\音频播放.exe
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\音频播放.pdb
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\Interop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\AxInterop.WMPLib.dll

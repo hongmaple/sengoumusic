@@ -1,0 +1,7 @@
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\Interop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\AxInterop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\音频播放.csproj.ResolveComReference.cache
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\音频播放.Form1.resources
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\音频播放.Properties.Resources.resources
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\音频播放.csproj.GenerateResource.cache
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Release\音频播放.csproj.CoreCompileInputs.cache

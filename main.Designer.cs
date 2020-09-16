@@ -57,11 +57,14 @@ namespace 音频播放
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button9 = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            this.groupBox1.SuspendLayout();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -76,15 +79,13 @@ namespace 音频播放
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
-            this.groupBox1.Location = new System.Drawing.Point(651, 24);
+            this.groupBox1.Location = new System.Drawing.Point(651, 45);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(299, 619);
+            this.groupBox1.Size = new System.Drawing.Size(299, 589);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "歌曲列表";
             // 
             // contextMenuStrip1
             // 
@@ -99,10 +100,10 @@ namespace 音频播放
             this.listBox1.ForeColor = System.Drawing.Color.White;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 29;
-            this.listBox1.Location = new System.Drawing.Point(10, 22);
+            this.listBox1.Location = new System.Drawing.Point(-4, -4);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(278, 671);
+            this.listBox1.Size = new System.Drawing.Size(312, 584);
             this.listBox1.TabIndex = 1;
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick_1);
             // 
@@ -364,6 +365,29 @@ namespace 音频播放
             this.axWindowsMediaPlayer1.TabIndex = 3;
             this.axWindowsMediaPlayer1.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.axWindowsMediaPlayer1_PlayStateChange);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.listBox1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 28);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Size = new System.Drawing.Size(292, 566);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "所有歌曲";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.ContextMenuStrip = this.contextMenuStrip1;
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(650, 45);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(300, 598);
+            this.tabControl1.TabIndex = 1;
+            // 
             // main
             // 
             this.AcceptButton = this.button2;
@@ -372,6 +396,7 @@ namespace 音频播放
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(974, 658);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button4);
@@ -393,13 +418,14 @@ namespace 音频播放
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,6 +458,8 @@ namespace 音频播放
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.ListBox listBox1;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }
 

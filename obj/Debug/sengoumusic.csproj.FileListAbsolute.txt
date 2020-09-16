@@ -1,0 +1,14 @@
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\Interop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\AxInterop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\Interop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\AxInterop.WMPLib.dll
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.csproj.ResolveComReference.cache
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\音频播放.main.resources
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.csproj.GenerateResource.cache
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.csproj.CoreCompileInputs.cache
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\sengoumusic.exe.config
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\sengoumusic.exe
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\bin\Debug\sengoumusic.pdb
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.Properties.Resources.resources
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.exe
+D:\ItProjects\H1C#窗体项目\项目文件\sengoumusic\obj\Debug\sengoumusic.pdb
